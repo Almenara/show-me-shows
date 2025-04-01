@@ -1,0 +1,11 @@
+@import '../../../../src/styles.scss';
+main{
+    background-color: $beige;
+    padding-top: $min-header-height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    min-width: 100dvw;
+    min-height: calc(100dvh - $min-footer-height);
+}

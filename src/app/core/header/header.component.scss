@@ -1,0 +1,34 @@
+@import '../../../../src/styles.scss';
+
+header{
+    display: flex;
+    width: 100%;
+    position: fixed;
+    background-color: $background-color;
+    flex-direction: column;
+    justify-content: start;
+    
+    top: 0;
+    min-height: $min-header-height;
+    #title{
+        height: 80px;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        padding-bottom: 0;
+        h1{
+            font-size: 1.5rem;
+            font-weight: 200;
+            color: $primary-color;
+        }
+        &.subtitle{
+            font-size: 1.5rem;
+            font-weight: 100;
+            font-style: italic;
+            color: $primary-color;
+            padding: 0;
+            line-height: 1.4rem;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap');
+$title-font: "Martian Mono", monospace;
+$text-font: "Bodoni Moda", serif;
+h1{
+    font-size: 3rem;
+    font-weight: 100;
+    font-family: $title-font;
+    color: $primary-color;
+    font-variation-settings: "wdth" 112;
+    
+    &.subtitle{
+        font-size: 1.5rem;
+        font-weight: 100;
+        font-family: $text-font;
+        color: $primary-color;
+        font-style: italic;
+    }
+}
+h2{
+    font-size: 2rem;
+    font-family: $title-font;
+    font-weight: 100;
+    color: $secondary-color;
+}
