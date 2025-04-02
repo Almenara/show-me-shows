@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+$title-font:  "Boldonse", system-ui;
+$text-font: "Lato", sans-serif;
+h1{
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: $title-font;
+    color: $primary-color;
+}
+h2{
+    font-size: 2rem;
+    font-family: $title-font;
+    font-weight: 100;
+    color: $secondary-color;
+}
+p{
+    font-size: 1.2rem;
+    font-family: $text-font;
+    font-weight: 100;
+    color: $primary-color;
+}

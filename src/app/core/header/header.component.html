@@ -1,0 +1,24 @@
+<header>
+    <div id="title" class="">
+        <h1>Show Me Shows</h1>
+        <h3 class="subtitle">Series, en serio.</h3>
+    </div>
+    <div id="user">
+        <img src="assets/user.png" alt="User" />
+    </div>
+    <div id="burger" (click)="toggleMenu()" [ngClass]="{'close': isMenuOpen()}">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="search" [ngClass]="{'is-open': isMenuOpen()}">
+        <input type="text" placeholder="Buscar..." />
+    </div>
+    <nav id="navbar" [ngClass]="{'is-open': isMenuOpen()}">
+        <ul>
+            <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"  >HOME</a></li>
+            <li><a routerLink="/shows" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }"  >TV SHOWS</a></li>
+            <li><a routerLink="/movies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }"  >MOVIES</a></li>
+        </ul>
+    </nav>
+</header>
