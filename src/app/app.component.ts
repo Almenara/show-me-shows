@@ -8,6 +8,7 @@ import { MainComponent } from "./core/main/main.component";
   standalone: true,
   imports: [HeaderComponent, FooterComponent, MainComponent],
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 }

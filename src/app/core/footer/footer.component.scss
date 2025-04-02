@@ -1,0 +1,87 @@
+@import '../../../../src/styles.scss';
+
+
+:host{
+    margin-top: auto;
+}
+footer{
+    background-color: $blue-light;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    flex-direction: column;
+    padding: 30px;
+    #logo{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        h1{
+            min-width: max-content;
+            font-size: 1rem;
+            font-weight: 200;
+            color: $primary-color;
+            margin: 0;
+        }
+    }
+    ul{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 20px;
+        min-width: max-content;
+        order: 0;
+        li{
+            list-style-type: none;
+            a{
+                color: $primary-color;
+                font-size: 1rem;
+                text-decoration: none;
+                &:hover{
+                    color: $blue-dark;
+                }
+            }
+        }
+    }
+    #nav{
+        padding-top: 0;
+        padding-bottom: 30px;
+        a:hover{
+            color: $white;
+            text-decoration: underline;
+        }
+        @media screen and (width > $md){
+            padding-top: 8px;
+            padding-bottom: 0;
+        }
+    }
+    #social{
+        a{
+            display: flex;
+            height: 35px;
+            width: 35px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            aspect-ratio: 1/1;
+            background-color: $white;
+            color: $blue-light;
+            font-size: 1.5rem;
+            text-decoration: none;
+            &:hover{
+                background-color: $blue-light;
+                color: $white;
+            }
+        }
+    }
+    @media screen and (width > $md){
+        gap: 50px;
+        flex-direction: row;
+    }
+    @media screen and (width > $xl){
+        padding: 30px 8vw;
+        
+    }
+}
