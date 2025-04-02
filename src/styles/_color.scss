@@ -1,14 +1,16 @@
-$white: #fff6e7;
+$white: #f1f1f1;
 $black: #1d1d1b;
-$red: #bf414a;
-$blue: #8881bd;
-$orange: #f2ce74;
-$pink: #efc2b8;
-$yellow: #eef033;
 
+$red: #BB1737;
+$red-dark: #C9133A;
+
+$blue-lighter: #314F61;
+$blue-light: #0F2E43;
+$blue: #142430;
+$blue-dark: #0A1923;
 
 // Color background
-$background-color: $white;
+$background-color: $blue-dark;
 // Main colors
-$primary-color: $black;
-$secondary-color: $black;
+$primary-color: $white;
+$secondary-color: $blue-lighter;

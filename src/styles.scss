@@ -2,3 +2,33 @@
 @import 'styles/_color.scss';
 @import 'styles/_typography.scss';
 
+html, body{
+    padding: 0;
+    margin: 0;
+}
+
+html, body, main{
+    background-color: $background-color;
+    color: $white;
+    a{
+        color: $blue-lighter;
+        text-decoration: none;
+        &:hover{
+            text-decoration: $red-dark;
+        }
+    }
+}
+
+*{
+    box-sizing: border-box;
+    outline: none;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+        padding: 0;
+        margin: 0;
+    }
+}
