@@ -1,2 +1,10 @@
-<p>home works!</p>
-asdfasdf
+@if(movies && movies.length > 0){
+  <div class="movie-list">
+    <div *ngFor="let movie of movies" class="movie-item">
+        {{movie | json}}
+      <img [src]="movie.poster" alt="{{ movie.title }}" />
+      <h3>{{ movie.title }}</h3>
+      <p>{{ movie.description }}</p>
+    </div>
+  </div>
+}
