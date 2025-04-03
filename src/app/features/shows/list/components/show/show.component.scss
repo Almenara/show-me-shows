@@ -1,0 +1,32 @@
+@import '../../../../../../styles.scss';
+.show-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    width: min-content;
+    height: 100%;
+    background-color: $blue-light;
+    border-radius: 10px;
+    padding: 20px 20px 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    app-cover{
+        transition: all 0.3s ease;
+        transform: scale(1) translateY(0); 
+    }
+    h3{
+        font-size: 1.5rem;
+        text-align: center;
+        max-width: fit-content;
+    }
+    &:hover{
+        app-cover{
+            transform: scale(1.05) translateY(3px);
+        }
+        background-color: $blue-lighter;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    }
+}

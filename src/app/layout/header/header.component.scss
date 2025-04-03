@@ -12,7 +12,7 @@ header{
     flex-wrap: wrap;
     top: 0;
     padding: 7px 14px;
-    min-height: $min-header-height;
+    z-index: 99;
     #logo{
         display: flex;
         justify-content: center;
@@ -256,8 +256,6 @@ header{
         justify-content: space-between;
         align-items: center;
         padding: 20px 25px;
-        min-height: $min-header-height;
         gap: 10px;
-        
     }
 }

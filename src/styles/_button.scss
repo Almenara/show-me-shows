@@ -1,0 +1,22 @@
+@import '_color.scss';
+
+.button{
+    display: inline-flex;
+    background-color: $yellow;
+    color: $black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover{
+        background-color: $white;
+    }
+
+    &:disabled{
+        background-color: $blue-light;
+        cursor: not-allowed;
+    }
+}

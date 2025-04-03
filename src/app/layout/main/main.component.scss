@@ -2,9 +2,15 @@
 
 main{
     background-color: $background-color;
-    padding-top: $min-header-height;
+    padding-top: 136px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
+    @media screen and (width > $sm) {
+        padding-top: 162px;
+    }
+    @media screen and (width > $xl) {
+        padding-top: 124px;
+    }
 }

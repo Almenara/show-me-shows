@@ -1,2 +1,9 @@
-<p>home works!</p>
-asdfasdf
+
+@if(shows && shows.length > 0){
+    <app-list [shows]="shows"></app-list>
+}
+@else{
+    <div class="no-movies">
+        <p>No hay series disponibles</p>
+    </div>
+}

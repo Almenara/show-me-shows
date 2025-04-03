@@ -1,0 +1,15 @@
+
+<div class="show-list">
+    @for(show of shows; track show) {
+        <div class="show-item">
+            <app-show [show]="show" [routerLink]="[ '/show', show.id ]" />
+        </div>
+    }
+</div>
+<div id="pagination">
+    <app-pagination
+        [page]="page"
+        [totalPages]="totalPages"
+        (pageChange)="onPageChange($event)"
+    />
+</div>

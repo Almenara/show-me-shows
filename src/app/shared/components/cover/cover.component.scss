@@ -1,0 +1,14 @@
+@import '../../../../styles.scss';
+
+.cover{
+    position: relative;
+    width: 220px;
+    height: 330px;
+    overflow: hidden;
+    border: 2px solid ;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $blue-lighter;
+}
