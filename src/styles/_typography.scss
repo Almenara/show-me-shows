@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
 $title-font:  "Boldonse", system-ui;
-
 $text-font: "Lato", sans-serif;
 h1{
-    font-size: 3rem;
-    font-weight: 700;
+    font-size: 2.1rem;
     font-family: $title-font;
     color: $primary-color;
+    @media screen and (width > $sm) {
+        font-size: 3rem;
+    }
 }
 h2{
     font-size: 2rem;
     font-family: $title-font;
-    font-weight: 100;
-    color: $secondary-color;
+    color: $primary-color;
+    @media screen and (width > $sm) {
+        font-size: 1.5rem;
+    }
 }
 p{
     font-size: 1.2rem;

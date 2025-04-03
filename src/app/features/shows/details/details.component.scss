@@ -1,0 +1,112 @@
+@import '../../../../styles.scss';
+:host{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @media screen and (width > $md) {
+        flex-direction: row;
+    }
+}
+aside{
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 14px;
+    position: relative;
+    background-color: $blue-lighter;
+    height: 100%;
+    .show-item{
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        .title{
+            display: block;
+            width: 100%;
+        }
+        .description{
+            margin: 0 0 20px;
+            display: flex;
+            flex: 1;
+            min-width: 220px;
+        }
+    } 
+    @media screen and (width > $md) {
+        width: 380px;
+        padding: 0 50px 50px;
+        .show-item{
+            position: sticky;
+            top: 212px;
+            .title{
+                display: none;
+            }
+        }
+    }
+    @media screen and (width > $lg) {
+        .show-item{
+            top: 212px;
+        }
+    }
+    @media screen and (width > $xl) {
+        .show-item{
+            top: 175px;
+        }
+    }
+
+}
+article{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 14px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top center;
+    .title{
+        display: none;
+    }
+    .show-details{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 100%;
+        gap:20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        p{
+            width: 100%;
+            max-width: 200px;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    .video-container{
+        width: 100%;
+        max-width: 700px;
+        iframe{
+            aspect-ratio: 16/9;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+    }
+    .recommendations{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 40px 20px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    @media screen and (width > $md) {
+        padding: 0 50px 50px;
+        .title{
+            display: block;
+        }
+        .show-details{
+            max-width: 70%;
+        }
+    }
+}

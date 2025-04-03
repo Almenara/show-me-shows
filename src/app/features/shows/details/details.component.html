@@ -1,1 +1,79 @@
-<p>details works!</p>
+
+<aside>
+    @if(show){
+        <div class="show-item">
+            <h1 class="title">{{show.name}}</h1>
+            <app-cover [poster_path]="show.poster_path"></app-cover>
+            <p class="description">{{ show.overview }}</p>
+        </div>
+    }
+</aside>
+<article>
+    @if(show){
+        <h1 class="title">{{show.name}}</h1>
+        <div class="show-details">
+            <p><b>Puntuación:</b> <br/> {{ show.vote_average | number : '1.1-1'  }}</p>
+            <p><b>Fecha de emisión:</b> <br/> {{ show.first_air_date | date }}</p>
+            @if(show.genres && show.genres.length > 0) {
+                <p><b>Género:</b>
+                    <br/> 
+                    <span *ngFor="let genre of show.genres; let last = last">
+                        {{ genre.name }}<span *ngIf="!last">, </span>
+                    </span>
+                </p>
+            }
+            @if(show.languages && show.languages.length > 0) {
+                <p><b>Idiomas:</b> <br/>
+                    <span *ngFor="let language of show.languages; let last = last">
+                        {{ language }}<span *ngIf="!last">, </span>
+                    </span>
+                </p>
+            }
+            @if(show.spoken_languages && show.spoken_languages.length > 0) {
+                <p><b>Idiomas hablados:</b> <br/>
+                    <span *ngFor="let language of show.spoken_languages; let last = last">
+                        {{ language.name }}<span *ngIf="!last">, </span>
+                    </span>
+                </p>
+            }
+            @if(show.production_companies && show.production_companies.length > 0) {
+                <p><b>Productores:</b><br/>
+                    <span *ngFor="let company of show.production_companies; let last = last">
+                        {{ company.name }}<span *ngIf="!last">, </span>
+                    </span>
+                </p>
+            }
+            @if(show.networks && show.networks.length > 0) {
+                <p><b>Plataforma:</b> <br/>
+                    <span *ngFor="let network of show.networks; let last = last">
+                        {{ network.name }}<span *ngIf="!last">, </span>
+                    </span>
+                </p>
+            }
+            @if(show.created_by && show.created_by.length > 0) {
+                <p><b>Creado por:</b><br/> 
+                    <span *ngFor="let creator of show.created_by; let last = last">
+                        {{ creator.name }}<span *ngIf="!last">, </span>
+                    </span>
+                </p>
+            }
+        </div>
+        @if(show.videos && show.videos.length > 0) {
+            <h2>Videos</h2>
+            <div class="video-container">
+                @if(iframeVideoUrl){
+                    <iframe [src]="iframeVideoUrl" frameborder="0" allowfullscreen></iframe>
+                }        
+                @if(show.videos.length > 1) {
+                    <app-pagination [page]="1" [totalPages]="show.videos.length" (pageChange)="loadVideo($event)" />
+                }
+            </div>
+        }
+        @if(recommendations && recommendations.length > 0) {
+            <h2>Te guastará también</h2>
+            <div class="recommendations">
+                <app-cover *ngFor="let rec of recommendations" [poster_path]="rec.poster_path" />   
+            </div>
+        }
+    }
+</article>

@@ -1,8 +1,8 @@
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ProductionResponse } from '../models/production-response';
-import { Production } from '../models/production';
+import { ProductionResponse, VideosResponse } from '../models/production-response';
+import { Production, ProductionPreview, Video } from '../models/production';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +28,35 @@ export class TmdbService {
     return this.showsCurrentPage$.getValue();
   }
 
-  private showList: BehaviorSubject<Production[]> = new BehaviorSubject<Production[]>([]);
-  get showList$(): Observable<Production[]> {
+  private showList: BehaviorSubject<ProductionPreview[]> = new BehaviorSubject<ProductionPreview[]>([]);
+  get showList$(): Observable<ProductionPreview[]> {
     return this.showList.asObservable();
   }
 
+  private show: BehaviorSubject<Production | null> = new BehaviorSubject<Production | null>(null);
+  get show$(): Observable<Production | null> {
+    return this.show.asObservable();
+  }
+
+  private recommdantionCurrentPage$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
+  set recommdantionCurrentPage(page: number) {
+    this.recommdantionCurrentPage$.next(page);
+    if(this.show.getValue()!== null){
+      const currentShow = this.show.getValue()?.id;
+      if (currentShow) {
+        this.getRecommendations(currentShow);
+      }
+    }
+  }
+  get recommdantionCurrentPage(): number {
+    return this.recommdantionCurrentPage$.getValue();
+  }
+
+  private recommendations: BehaviorSubject<ProductionPreview[]> = new BehaviorSubject<ProductionPreview[]>([]);
+  get recommendations$(): Observable<ProductionPreview[]> {
+    return this.recommendations.asObservable();
+  }
+  
 
   /**
    * Description: Este método obtiene la lista de series populares de la API de TMDB.
@@ -46,7 +70,7 @@ export class TmdbService {
       map((response: ProductionResponse) => {
         return response.results;
       })
-    ).subscribe((response: Production[]) => this.showList.next(response));
+    ).subscribe((response: ProductionPreview[]) => this.showList.next(response));
   }
 
   /**
@@ -54,14 +78,58 @@ export class TmdbService {
    * @param id - ID de la serie
    * @returns Observable<any>
    */
-  public getShowDetail(id: number): Observable<any> {
-    return this.http.get(`https://api.themoviedb.org/3/tv/${id}?language=es-ES`, {
+  public getShowDetail(id: number): void {
+    this.show.next(null);
+    this.http.get<Production>(`https://api.themoviedb.org/3/tv/${id}`, {
       headers: this.headers
     }).pipe(
       map((response) => {
         return response;
       }
-    ));
+    )).subscribe({
+      next: (response: Production) => {
+        this.getShowVideos(id, response);
+      },
+      error: (error: any) => {
+        console.error('Error al obtener el detalle de la serie:', error);
+      }
+    });
+  }
+
+  private getShowVideos(id: number, show: Production): void {
+    this.http.get<VideosResponse>(`https://api.themoviedb.org/3/tv/${id}/videos`, {
+      headers: this.headers
+    }).pipe(
+      map((response) => {
+        return response;
+      }
+    )).subscribe({
+      next: (response) => {
+        show.videos = response.results.length > 0 ? response.results : null;
+        this.show.next(show);
+      },
+      error: (error: any) => {
+        this.show.next(show);
+        console.error('Error al obtener el detalle de la serie:', error);
+      }
+    });
+  }
+
+  public getRecommendations(id: number): void {
+     this.http.get<ProductionResponse>(`https://api.themoviedb.org/3/tv/${id}/recommendations?page=${this.showsCurrentPage}`, {
+      headers: this.headers
+    }).pipe(
+      map((response) => {
+        return response.results;
+      }
+    )).subscribe({
+      next: (response: ProductionPreview[]) => {
+        this.recommendations.next(response);
+      }, 
+      error: (error: any) => {
+        console.error('Error al obtener las recomendaciones:', error);
+      }
+    });
   }
 
 }

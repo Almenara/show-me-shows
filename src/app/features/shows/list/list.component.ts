@@ -1,5 +1,5 @@
-import { Component, inject, Input } from '@angular/core';
-import { Production } from '../../../models/production';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { ProductionPreview } from '../../../models/production';
 import { ShowComponent } from './components/show/show.component';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 import { TmdbService } from '../../../services/tmdb.service';
@@ -12,11 +12,15 @@ import { RouterModule } from '@angular/router';
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
-export class ListComponent {
-  @Input('shows') public shows! : Production[];
+export class ListComponent implements OnInit {
+  @Input('shows') public shows! : ProductionPreview[];
   private tmdbService = inject(TmdbService);
   public page: number = 1;
   public totalPages: number = 12;
+
+  ngOnInit(): void {
+    this.page = this.tmdbService.showsCurrentPage;
+  }
 
   public onPageChange(page: number) {
     this.page = page;
