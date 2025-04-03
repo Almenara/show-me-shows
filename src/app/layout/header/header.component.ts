@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   
-  public isMenuOpen: WritableSignal<boolean> = signal(true);
+  public isMenuOpen: WritableSignal<boolean> = signal(false);
 
   public toggleMenu(): void {
     this.isMenuOpen.update((value: boolean) => !this.isMenuOpen());

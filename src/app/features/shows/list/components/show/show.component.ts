@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CoverComponent } from '../../../../../shared/components/cover/cover.component';
-import { Production } from '../../../../../models/production';
+import { ProductionPreview } from '../../../../../models/production';
 
 @Component({
   selector: 'app-show',
@@ -11,5 +11,5 @@ import { Production } from '../../../../../models/production';
   styleUrl: './show.component.scss'
 })
 export class ShowComponent {
-  @Input('show') public show! : Production;
+  @Input('show') public show! : ProductionPreview;
 }
