@@ -2,11 +2,13 @@ import { Subscription } from 'rxjs';
 import { TmdbService } from './../../services/tmdb.service';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ListComponent } from '../shows/list/list.component';
+import { Production } from '../../models/production';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ListComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -14,16 +16,16 @@ export class HomeComponent implements OnInit, OnDestroy{
   
   private tmdbService: TmdbService = inject(TmdbService);
   private subscriptions: Subscription = new Subscription();
-  public movies: any[] = [];
+  public shows!: Production[];
 
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.tmdbService.getMolvieList().subscribe((response: any) => {
-        this.movies = response.results;
+      this.tmdbService.showList$.subscribe((shows: Production[]) => {
+        this.shows = shows;
       })
     );  
-
+    this.tmdbService.getShowsList();
   }
 
   ngOnDestroy(): void {

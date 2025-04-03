@@ -1,0 +1,14 @@
+@if(poster_path){
+    <div class="cover">
+        <img class="poster w-full"
+            src="https://media.themoviedb.org/t/p/w220_and_h330_face/{{ poster_path }}"
+            srcset="https://media.themoviedb.org/t/p/w220_and_h330_face/{{ poster_path }} 1x, https://media.themoviedb.org/t/p/w440_and_h660_face/{{ poster_path }} 2x" 
+            alt="shows.name" 
+        />
+    </div>
+}
+@else{
+    <div class="cover">
+        <h1>?</h1>
+    </div>
+}
