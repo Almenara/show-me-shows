@@ -96,17 +96,32 @@ article{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 40px 20px;
         margin-top: 10px;
         margin-bottom: 20px;
+        app-cover:nth-child(n+7){
+            display: none;
+        }
+
     }
     @media screen and (width > $md) {
         padding: 0 50px 50px;
         .title{
-            display: block;
+            display: flex;
+            background-color: $blue-dark;
+            margin: 0;
+            padding: 40px 0 20px;
+            z-index: 9;
         }
         .show-details{
             max-width: 70%;
+        }
+    }
+    @media screen and (width > $xl) {
+        .title{
+            position: sticky;
+            top: 124px;
         }
     }
 }

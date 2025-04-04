@@ -20,6 +20,7 @@ header{
         flex-direction: column;
         min-width: max-content;
         order: 0;
+        cursor: pointer;
         h1{
             font-size: 1rem;
             font-weight: 200;
@@ -53,24 +54,25 @@ header{
     #user{
         display: flex;
         justify-content: center;
-        align-items: center;
-        flex-direction: row;
+        align-items: end;
         gap: 10px;
-        min-width: max-content;
         order: 2;
         margin-left: auto;
-        img{
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            background-color: $white;
-            cursor: pointer;
-            &:hover{
-                border-color: $red-dark;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: $white;
+        overflow: hidden;
+        svg{
+            width: 90%;
+            height: 90%;
+            path{
+                fill: $blue-lighter;
             }
         }
         @media screen and (width > $md){
+            height: 50px;
+            width: 50px;
             order: 4;
         }
     }
